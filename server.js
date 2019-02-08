@@ -13,10 +13,6 @@ app.use(cors());
 //'ShortUrl' is name of collection but mongoose pluralizes it for collections
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://davidhan:egan25@ds042729.mlab.com:42729/fccprojects', { useNewUrlParser: true });
 
-app.get('/', function(req, res){
-    res.sendFile(__dirname + '/index.html');
-});
-
 //Allows node to find static content in public folder
 app.use(express.static(__dirname + '/public'));
 
@@ -53,7 +49,7 @@ app.get('/api/shorturl/new/:urlToShorten(*)', (req, res, next) => {
 });
 
 //Query database and forward to originalUrl
-app.get('/:urlToForward', (req, res, next) => {
+app.post('/:urlToForward', (req, res, next) => {
     //Stores value of param
     let { urlToForward } = req.params;
     shortUrl.findOne({'shorterUrl': urlToForward}, (err, data) => {
