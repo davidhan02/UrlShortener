@@ -49,7 +49,7 @@ app.get('/api/shorturl/new/:urlToShorten(*)', (req, res, next) => {
 });
 
 //Query database and forward to originalUrl
-app.post('/:urlToForward', (req, res, next) => {
+app.get('/api/shorturl/:urlToForward', (req, res, next) => {
     //Stores value of param
     let { urlToForward } = req.params;
     shortUrl.findOne({'shorterUrl': urlToForward}, (err, data) => {
