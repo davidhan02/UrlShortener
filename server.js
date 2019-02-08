@@ -5,7 +5,6 @@ const cors = require('cors');
 const mongoose = require('mongoose');
 const shortUrl = require('./models/shortUrl');
 const app = express();
-const regex = new RegExp(/[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)?/, 'gi');
 
 app.use(bodyParser.json());
 app.use(cors());
@@ -22,7 +21,8 @@ app.get('/api/shorturl/new/:urlToShorten(*)', (req, res, next) => {
     //ES5 var urlToShorten = req.params.urlToShorten
     let { urlToShorten } = req.params;
     //Regex for url
-    if(regex.test(urlToShorten)) {
+    const regex = /[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,5}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)?/gi;
+    if(regex.test(urlToShorten)==true) {
         // creates whole number between 0 and 100000
         let short = Math.floor(Math.random()*100000).toString();
 
