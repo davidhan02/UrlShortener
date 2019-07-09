@@ -24,19 +24,17 @@
         <p>
           example: <code>POST [project_url]/api/shorturl/new</code> - <code>https://www.google.com</code>
         </p>
-        <section ng-controller='shortAppCtrl'>
+        <section ng-controller="shortAppCtrl">
             URL to be shortened: 
             <input placeholder = "Enter URL" ng-model="urlToShorten">
-            <a class = "btn btn-primary" ng-href='/api/shorturl/new/{{urlToShorten}}'>Get ShortUrL</a>
+            <a class = "btn btn-primary" ng-href="/api/shorturl/new/{{urlToShorten}}">Get ShortUrL</a>
         </section>
         
         <h3>Example Usage:</h3>
-        <a href="https://thread-paper.hyperdev.space/api/shorturl/3">
+        <a href="#">
           [this_project_url]/api/shorturl/3
         </a>
-
-        <h3>Will Redirect to:</h3>
-        <p>https://forum.freecodecamp.com</p>
+        
       </div>
       <div class="footer">
         <p>
